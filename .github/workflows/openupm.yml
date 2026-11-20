@@ -1,0 +1,27 @@
+name: OpenUPM
+
+on:
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Require an existing release tag
+        env:
+          REF_TYPE: ${{ github.ref_type }}
+        run: |
+          if [ "$REF_TYPE" != "tag" ]; then
+            echo "Run this workflow on the release tag after the package is registered on OpenUPM."
+            exit 1
+          fi
+      - uses: openupm/openupm-action@89b79dc8dd6cb319efff06727f8fa0051ce7e517 # v1
+        with:
+          package: com.yvsim.xunfei-speech-recognition
+          tag: ${{ github.ref_name }}
+          timeout-minutes: '20'

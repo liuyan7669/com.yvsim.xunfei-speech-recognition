@@ -1,0 +1,39 @@
+{
+  "name": "com.yvsim.xunfei-speech-recognition",
+  "version": "1.0.0",
+  "displayName": "Xunfei Speech Recognition",
+  "description": "通过讯飞 IAT WebSocket 服务将音频转换为文字，适合语音指令、录音转写及实时语音识别；提供 Editor、Windows、Android 和 WebGL 平台实现。\n\n主要功能：\n1. 接收完整 PCM16 WAV、裸 PCM16 字节、可读取的 AudioClip，或由外部持续写入的实时 PCM16 分块。\n2. 为 AudioClip 分帧读取、降混和重采样；按服务协议分帧发送，更新中间文本并交付最终结果。\n3. 提供启动、状态变化、中间文本、完成、取消和失败事件，查询会话状态、文字、音频时长与服务会话 ID。\n4. 支持运行时设置/清除服务凭据、配置语言与口音，以及取消当前识别并忽略迟到回调。\n\n使用说明：WAV/PCM 输入要求 16 kHz、单声道、16-bit，当前单次最多 60 秒，且全局一个会话。需自行提供已开通服务的凭据和网络；本包不采集麦克风，不依赖 Audio Recorder 或 Device Files，附带独立 UGUI 示例。",
+  "unity": "2021.3",
+  "author": {
+    "name": "Yvsim"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "com.unity.nuget.newtonsoft-json": "3.2.2",
+    "com.unity.modules.audio": "1.0.0",
+    "com.unity.ugui": "1.0.0"
+  },
+  "keywords": [
+    "speech",
+    "recognition",
+    "xunfei",
+    "iat"
+  ],
+  "samples": [
+    {
+      "displayName": "UGUI Usage",
+      "description": "打开独立 UGUI 场景，运行时填入讯飞服务凭据，分别提交完整 WAV、裸 PCM16、AudioClip 和实时 PCM16，观察中间文字、状态、完成/取消/失败事件；不采集麦克风，不依赖录音或文件包。",
+      "path": "Samples~/UGUI Usage"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/liuyan7669/com.yvsim.xunfei-speech-recognition.git"
+  },
+  "documentationUrl": "https://github.com/liuyan7669/com.yvsim.xunfei-speech-recognition#readme",
+  "changelogUrl": "https://github.com/liuyan7669/com.yvsim.xunfei-speech-recognition/blob/main/CHANGELOG.md",
+  "bugs": {
+    "url": "https://github.com/liuyan7669/com.yvsim.xunfei-speech-recognition/issues"
+  },
+  "licensesUrl": "https://github.com/liuyan7669/com.yvsim.xunfei-speech-recognition/blob/main/LICENSE.md"
+}
