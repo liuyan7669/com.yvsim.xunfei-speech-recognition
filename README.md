@@ -11,7 +11,7 @@
 2. 等待 Unity 完成依赖解析和编译。也可将本包完整目录放入工程的 `Packages/`，作为 Embedded Package。
 
 本包不依赖 Inspector Groups 或其他 Yvsim 包。所需 Unity 依赖由 `package.json` 声明并由 UPM 解析。
-本地源码安装不要求 OpenUPM。仓库和注册表重新发布前，不应把 Git tag 或注册表中的 `1.0.0` 当作已可用版本。
+本包提供本地源码、Git 和 OpenUPM 安装方式；固定版本使用 `1.0.0`，具体步骤见下文。
 
 依赖 Newtonsoft Json **3.2.2**、Unity Audio 与 uGUI。uGUI 用于示例；运行时业务仅需调用静态 API。
 
@@ -121,4 +121,22 @@ WritePcm16 在返回前复制指定数据，可随后复用源数组。已写入
 https://github.com/liuyan7669/com.yvsim.xunfei-speech-recognition.git#main
 ```
 
-此地址指向 main 分支，当前包版本为 1.0.0。本次上传不创建版本 tag 或 GitHub Release，也不代表已在 OpenUPM 登记；Unity 官方依赖仍按 package.json 解析。
+此地址跟随 main 分支。需要固定 1.0.0 源码时，将 `#main` 改为 `#v1.0.0`；Unity 官方依赖仍按 package.json 解析。
+
+## 从 OpenUPM 安装
+
+在 Unity 的 Project Settings > Package Manager 中添加 Scoped Registry：
+
+- Name：OpenUPM
+- URL：`https://package.openupm.com`
+- Scope：`com.yvsim`
+
+然后在 Package Manager 中通过 Add package by name 输入 `com.yvsim.xunfei-speech-recognition`，版本填 `1.0.0`。也可从 My Registries 中选择本包。声明的 Yvsim 依赖由 OpenUPM 解析，Unity 官方依赖仍由 Unity 注册表提供。
+
+如果已安装 OpenUPM CLI，可在工程根目录执行：
+
+```sh
+openupm add com.yvsim.xunfei-speech-recognition@1.0.0
+```
+
+[OpenUPM 包页面](https://openupm.com/packages/com.yvsim.xunfei-speech-recognition/)
